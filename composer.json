@@ -1,0 +1,14 @@
+{
+    "name": "michaeljennings/notifier",
+    "description": "A php class to simply flash notifications to a session and then display them using a javascript notifier.",
+    "authors": [
+        {
+            "name": "Michael Jennings",
+            "email": "michael.jennings91@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "illuminate/support": ">=4.0"
+    }
+}
