@@ -1,7 +1,7 @@
 <?php namespace Michaeljennings\Notifier\Alertify;
 
 use Illuminate\Support\Fluent;
-use Michaeljennings\Contracts\Notifier\Notification as NotificationInterface;
+use Michaeljennings\Notifier\Contracts\Notification as NotificationInterface;
 
 class Notification extends Fluent implements NotificationInterface {
 
