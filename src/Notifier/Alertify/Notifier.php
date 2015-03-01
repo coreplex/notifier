@@ -38,7 +38,7 @@ class Notifier extends AbstractNotifier {
      * Get the notification class for the notifier.
      *
      * @param array $properties
-     * @return \Nexus\Contracts\Notifier\Notification
+     * @return \Michaeljennings\Contracts\Notifier\Notification
      */
     protected function newNotification(array $properties)
     {
