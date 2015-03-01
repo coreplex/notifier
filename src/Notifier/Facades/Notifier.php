@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class Notifier extends extends Facade {
+class Notifier extends Facade {
 
 	/**
 	 * Get the registered name of the component.
