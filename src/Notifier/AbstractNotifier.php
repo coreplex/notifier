@@ -1,8 +1,9 @@
 <?php namespace Michaeljennings\Notifier;
 
 use Illuminate\Session\Store;
+use Michaeljennings\Notifier\Contracts\Notifier NotifierInterface;
 
-abstract class AbstractNotifier {
+abstract class AbstractNotifier implements NotifierInterface {
 
     /**
      * The view we shall use to render notifications.

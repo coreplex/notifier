@@ -28,19 +28,19 @@ class NotifierServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton('nexus.notifier', function($app)
+        $this->app->singleton('michaeljennings.notifier', function($app)
         {
             return new NotifierManager($app);
         });
 
-        $this->app->bind('nexus.notifier.driver', function($app)
+        $this->app->bind('michaeljennings.notifier.driver', function($app)
         {
-            return $app['nexus.notifier']->driver();
+            return $app['michaeljennings.notifier']->driver();
         });
 
-        $this->app->bind('Nexus\Contracts\Notifier\Notifier', function($app)
+        $this->app->bind('Michaeljennings\Notifier\Contracts\Notifier', function($app)
         {
-            return $app['nexus.notifier.driver'];
+            return $app['michaeljennings.notifier.driver'];
         });
     }
 
