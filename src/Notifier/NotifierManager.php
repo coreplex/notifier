@@ -11,7 +11,11 @@ class NotifierManager extends Manager {
      */
     public function createAlertifyDriver()
     {
-        return new Alertify\Notifier($this->app['session.store'], config('notifier'));
+        return new Alertify\Notifier(
+            $this->app['session.store'],
+            $this->app['coreplex.notifier.renderer'],
+            config('notifier')
+        );
     }
 
     /**
@@ -21,7 +25,11 @@ class NotifierManager extends Manager {
      */
     public function createGrowlDriver()
     {
-        return new Growl\Notifier($this->app['session.store'], config('notifier'));
+        return new Growl\Notifier(
+            $this->app['session.store'],
+            $this->app['coreplex.notifier.renderer'],
+            config('notifier')
+        );
     }
 
     /**

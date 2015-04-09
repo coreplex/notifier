@@ -1,5 +1,6 @@
 <?php namespace Coreplex\Notifier;
 
+use Coreplex\Notifier\Contracts\Renderer;
 use Illuminate\Session\Store;
 use Coreplex\Notifier\Contracts\Notifier as NotifierInterface;
 
@@ -32,15 +33,23 @@ abstract class AbstractNotifier implements NotifierInterface {
     protected $session;
 
     /**
+     * An instance of a notifier renderer.
+     *
+     * @var Renderer
+     */
+    protected $renderer;
+
+    /**
      * The notifier config.
      *
      * @var array
      */
     protected $config;
 
-    public function __construct(Store $session, array $config)
+    public function __construct(Store $session, Renderer $renderer, array $config)
     {
         $this->session = $session;
+        $this->renderer = $renderer;
         $this->config = $config;
     }
 
@@ -155,6 +164,7 @@ abstract class AbstractNotifier implements NotifierInterface {
     {
         return $this->setTemplate()->with('notifier', $this);
     }
+
     /**
      * @return string
      */

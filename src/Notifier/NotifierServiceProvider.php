@@ -1,5 +1,6 @@
 <?php namespace Coreplex\Notifier;
 
+use Coreplex\Notifier\Renderers\LaravelBlade;
 use Illuminate\Support\ServiceProvider;
 
 class NotifierServiceProvider extends ServiceProvider {
@@ -31,6 +32,8 @@ class NotifierServiceProvider extends ServiceProvider {
      */
     public function register()
     {
+        $this->registerRenderer();
+
         $this->app->singleton('coreplex.notifier', function($app)
         {
             return new NotifierManager($app);
@@ -44,6 +47,14 @@ class NotifierServiceProvider extends ServiceProvider {
         $this->app->bind('Coreplex\Notifier\Contracts\Notifier', function($app)
         {
             return $app['coreplex.notifier.driver'];
+        });
+    }
+
+    protected function registerRenderer()
+    {
+        $this->app->bind('coreplex.notifier.renderer', function($app)
+        {
+            return new LaravelBlade($app['view']);
         });
     }
 
