@@ -21,7 +21,7 @@ class Notification extends Fluent implements NotificationInterface {
      */
     public function render()
     {
-        return view('notifier::growl.notification', ['notification' => $this]);
+        return view('notifier::growl.notification', ['notification' => $this])->render();
     }
 
     /**
