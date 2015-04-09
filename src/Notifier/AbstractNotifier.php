@@ -1,7 +1,7 @@
 <?php namespace Coreplex\Notifier;
 
 use Illuminate\Session\Store;
-use Michaeljennings\Notifier\Contracts\Notifier as NotifierInterface;
+use Coreplex\Notifier\Contracts\Notifier as NotifierInterface;
 
 abstract class AbstractNotifier implements NotifierInterface {
 
