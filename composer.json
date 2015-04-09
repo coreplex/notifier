@@ -1,6 +1,7 @@
 {
-    "name": "michaeljennings/notifier",
+    "name": "coreplex/notifier",
     "description": "A php class to simply flash notifications to a session and then display them using a javascript notifier.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Michael Jennings",
@@ -9,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Michaeljennings\\Notifier\\": "src/Notifier/"
+            "Coreplex\\Notifier\\": "src/Notifier/"
         }
     },
     "minimum-stability": "dev",

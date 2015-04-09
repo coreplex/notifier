@@ -1,6 +1,6 @@
-<?php namespace Michaeljennings\Notifier\Alertify;
+<?php namespace Coreplex\Notifier\Alertify;
 
-use Michaeljennings\Notifier\AbstractNotifier;
+use Coreplex\Notifier\AbstractNotifier;
 
 class Notifier extends AbstractNotifier {
 
@@ -38,7 +38,7 @@ class Notifier extends AbstractNotifier {
      * Get the notification class for the notifier.
      *
      * @param array $properties
-     * @return \Michaeljennings\Contracts\Notifier\Notification
+     * @return \Coreplex\Contracts\Notifier\Notification
      */
     protected function newNotification(array $properties)
     {

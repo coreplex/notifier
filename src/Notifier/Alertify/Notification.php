@@ -1,7 +1,7 @@
-<?php namespace Michaeljennings\Notifier\Alertify;
+<?php namespace Coreplex\Notifier\Alertify;
 
 use Illuminate\Support\Fluent;
-use Michaeljennings\Notifier\Contracts\Notification as NotificationInterface;
+use Coreplex\Notifier\Contracts\Notification as NotificationInterface;
 
 class Notification extends Fluent implements NotificationInterface {
 

@@ -1,9 +1,14 @@
-<?php namespace Michaeljennings\Notifier;
+<?php namespace Coreplex\Notifier;
 
 use Illuminate\Support\Manager;
 
 class NotifierManager extends Manager {
 
+    /**
+     * Create the alertify notification driver.
+     * 
+     * @return Alertify\Notifier
+     */
     public function createAlertifyDriver()
     {
         return new Alertify\Notifier($this->app['session.store'], config('notifier'));

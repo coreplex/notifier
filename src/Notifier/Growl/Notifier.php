@@ -1,6 +1,6 @@
-<?php namespace Michaeljennings\Notifier\Growl;
+<?php namespace Coreplex\Notifier\Growl;
 
-use Michaeljennings\Notifier\AbstractNotifier;
+use Coreplex\Notifier\AbstractNotifier;
 
 class Notifier extends AbstractNotifier {
 

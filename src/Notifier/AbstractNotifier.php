@@ -1,4 +1,4 @@
-<?php namespace Michaeljennings\Notifier;
+<?php namespace Coreplex\Notifier;
 
 use Illuminate\Session\Store;
 use Michaeljennings\Notifier\Contracts\Notifier as NotifierInterface;

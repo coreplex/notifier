@@ -1,4 +1,4 @@
-<?php namespace Michaeljennings\Notifier\Facades;
+<?php namespace Coreplex\Notifier\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,6 +9,6 @@ class Notifier extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'michaeljennings.notifier.driver'; }
+	protected static function getFacadeAccessor() { return 'coreplex.notifier.driver'; }
 
 }

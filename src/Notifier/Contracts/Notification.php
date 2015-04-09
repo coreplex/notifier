@@ -1,4 +1,4 @@
-<?php namespace Michaeljennings\Notifier\Contracts;
+<?php namespace Coreplex\Notifier\Contracts;
 
 interface Notification {
 
