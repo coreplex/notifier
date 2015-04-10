@@ -1,10 +1,10 @@
 <?php namespace Coreplex\Notifier\Alertify;
 
-use Illuminate\Support\Fluent;
+use Coreplex\Notifier\AbstractNotification;
 use Coreplex\Notifier\Contracts\Notifier as NotifierContract;
 use Coreplex\Notifier\Contracts\Notification as NotificationInterface;
 
-class Notification extends Fluent implements NotificationInterface {
+class Notification extends AbstractNotification implements NotificationInterface {
 
     /**
      * An instance of a notifier.
@@ -13,13 +13,11 @@ class Notification extends Fluent implements NotificationInterface {
      */
     protected $notifier;
 
-    public function __construct(array $properties, NotifierContract $notifier)
+    public function __construct(array $attributes, NotifierContract $notifier)
     {
-        $properties['alertifyLevel'] = $this->getAlertifyLevel($properties['level']);
+        $attributes['alertifyLevel'] = $this->getAlertifyLevel($attributes['level']);
 
-        parent::__construct($properties);
-
-        $this->notifier = $notifier;
+        parent::__construct($attributes, $notifier);
     }
 
     /**

@@ -13,8 +13,5 @@
             "Coreplex\\Notifier\\": "src/Notifier/"
         }
     },
-    "minimum-stability": "dev",
-    "require": {
-      "illuminate/support": ">=4.0"
-    }
+    "minimum-stability": "dev"
 }

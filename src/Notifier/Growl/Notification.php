@@ -1,27 +1,18 @@
 <?php namespace Coreplex\Notifier\Growl;
 
-use Illuminate\Support\Fluent;
+use Coreplex\Notifier\AbstractNotification;
 use Coreplex\Notifier\Contracts\Notifier as NotifierContract;
 use Coreplex\Notifier\Contracts\Notification as NotificationInterface;
 
-class Notification extends Fluent implements NotificationInterface {
+class Notification extends AbstractNotification implements NotificationInterface {
 
-    /**
-     * An instance of a coreplex notifier.
-     *
-     * @var Renderer
-     */
-    protected $notifier;
-
-    public function __construct(array $properties, NotifierContract $notifier)
+    public function __construct(array $attributes, NotifierContract $notifier)
     {
-        if ( ! empty($properties['level'])) {
-            $properties['growlLevel'] = $this->getGrowlLevel($properties['level']);
+        if ( ! empty($attributes['level'])) {
+            $attributes['growlLevel'] = $this->getGrowlLevel($attributes['level']);
         }
 
-        $this->notifier = $notifier;
-
-        parent::__construct($properties);
+        parent::__construct($attributes, $notifier);
     }
 
     /**
