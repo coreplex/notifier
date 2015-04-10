@@ -20,20 +20,14 @@ class LaravelBlade implements TemplatableRenderer {
     /**
      * Render the notifications.
      *
-     * @param array $data
+     * @param array $notifications
      * @return string
      */
-    public function render(array $data)
+    public function render(array $notifications)
     {
-        return $this->view->make($this->template)->with('notifications', $data)->render();
+        return $this->view->make($this->template, $notifications)->render();
     }
 
-    /**
-     * Set the template to be used by the renderer.
-     *
-     * @param $template
-     * @return $this
-     */
     public function setTemplate($template)
     {
         $this->template = $template;

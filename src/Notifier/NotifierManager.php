@@ -1,8 +1,23 @@
 <?php namespace Coreplex\Notifier;
 
 use Illuminate\Support\Manager;
+use Coreplex\Notifier\Contracts\Renderer;
 
 class NotifierManager extends Manager {
+
+    /**
+     * An instance of a notifier renderer.
+     *
+     * @var Renderer
+     */
+    protected $renderer;
+
+    public function __construct($app, Renderer $renderer)
+    {
+        parent::__construct($app);
+
+        $this->renderer = $renderer;
+    }
 
     /**
      * Create the alertify notification driver.
@@ -13,7 +28,7 @@ class NotifierManager extends Manager {
     {
         return new Alertify\Notifier(
             $this->app['session.store'],
-            $this->app['coreplex.notifier.renderer'],
+            $this->renderer,
             config('notifier')
         );
     }
@@ -27,7 +42,7 @@ class NotifierManager extends Manager {
     {
         return new Growl\Notifier(
             $this->app['session.store'],
-            $this->app['coreplex.notifier.renderer'],
+            $this->renderer,
             config('notifier')
         );
     }

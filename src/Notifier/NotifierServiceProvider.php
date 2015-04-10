@@ -36,7 +36,7 @@ class NotifierServiceProvider extends ServiceProvider {
 
         $this->app->singleton('coreplex.notifier', function($app)
         {
-            return new NotifierManager($app);
+            return new NotifierManager($app, $this->app['coreplex.notifier.renderer']);
         });
 
         $this->app->bind('coreplex.notifier.driver', function($app)

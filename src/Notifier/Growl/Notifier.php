@@ -5,13 +5,13 @@ use Coreplex\Notifier\AbstractNotifier;
 class Notifier extends AbstractNotifier {
 
     /**
-     * Set the template being used for the notifier.
+     * Get the template being used for the notifier.
      *
-     * @return \Illuminate\View\View
+     * @return string
      */
-    public function setTemplate()
+    public function getTemplate()
     {
-        return view('notifier::growl.default');
+        return $this->config['views']['growl']['template'];
     }
 
     /**
@@ -42,7 +42,7 @@ class Notifier extends AbstractNotifier {
      */
     protected function newNotification(array $properties)
     {
-        return new Notification($properties);
+        return new Notification($properties, $this);
     }
 
 }

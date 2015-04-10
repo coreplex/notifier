@@ -12,6 +12,18 @@ return [
      */
     'driver' => 'growl',
 
+    'views' => [
+
+        'growl' => [
+
+            'notification' => 'notifier::growl.notification',
+
+            'template' => 'notifier::growl.default',
+
+        ]
+
+    ],
+
     /*
      * --------------------------------------------------------------------
      *  Session Prefix

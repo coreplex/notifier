@@ -54,11 +54,11 @@ abstract class AbstractNotifier implements NotifierInterface {
     }
 
     /**
-     * Set the template being used for the notifier.
+     * Get the template being used for the notifier.
      *
-     * @return \Illuminate\View\View
+     * @return string
      */
-    abstract public function setTemplate();
+    abstract public function getTemplate();
 
     /**
      * Return an array of scripts to be included on the frontend.
@@ -158,11 +158,12 @@ abstract class AbstractNotifier implements NotifierInterface {
     /**
      * Render the notifications view to be used on the frontend.
      *
-     * @return \Illuminate\View\View
+     * @return string
      */
     public function renderNotifications()
     {
-        return $this->setTemplate()->with('notifier', $this);
+        return $this->renderer->setTemplate($this->getTemplate())
+                              ->render(['notifier' => $this]);
     }
 
     /**
@@ -200,6 +201,22 @@ abstract class AbstractNotifier implements NotifierInterface {
     protected function getSessionKey($level = false)
     {
         return $this->config['sessionPrefix'] . '.notifications' . $level ? '.' . $level : '';
+    }
+
+    /**
+     * @return Renderer
+     */
+    public function getRenderer()
+    {
+        return $this->renderer;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig()
+    {
+        return $this->config;
     }
 
 }
