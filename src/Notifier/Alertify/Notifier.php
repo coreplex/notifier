@@ -9,9 +9,9 @@ class Notifier extends AbstractNotifier {
      *
      * @return \Illuminate\View\View
      */
-    public function setTemplate()
+    public function getTemplate()
     {
-        return view('notifier::alertify.default');
+        return $this->config['views']['alertify']['template'];
     }
 
     /**
@@ -42,7 +42,7 @@ class Notifier extends AbstractNotifier {
      */
     protected function newNotification(array $properties)
     {
-        return new Notification($properties);
+        return new Notification($properties, $this);
     }
 
 }

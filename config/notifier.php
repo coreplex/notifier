@@ -20,6 +20,14 @@ return [
 
             'template' => 'notifier::growl.default',
 
+        ],
+
+        'alertify' => [
+
+            'notification' => 'notifier::alertify.notification',
+
+            'template' => 'notifier::alertify.default',
+
         ]
 
     ],
@@ -31,6 +39,6 @@ return [
      *
      * The prefix to be prepended to all session keys.
      */
-    'sessionPrefix' => 'nexus.notifier',
+    'sessionPrefix' => 'coreplex.notifier',
 
 ];
