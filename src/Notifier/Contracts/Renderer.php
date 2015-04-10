@@ -10,4 +10,12 @@ interface Renderer {
      */
     public function render(array $data);
 
+    /**
+     * Set the template to be used by the renderer.
+     *
+     * @param $template
+     * @return $this
+     */
+    public function setTemplate($template);
+
 }

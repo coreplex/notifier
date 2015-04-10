@@ -12,6 +12,7 @@ return [
      */
     'driver' => 'growl',
 
+
     'views' => [
 
         'growl' => [

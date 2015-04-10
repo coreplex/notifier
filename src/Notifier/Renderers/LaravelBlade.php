@@ -1,9 +1,9 @@
 <?php namespace Coreplex\Notifier\Renderers; 
 
 use Illuminate\View\Factory;
-use Coreplex\Notifier\Contracts\TemplatableRenderer;
+use Coreplex\Notifier\Contracts\Renderer;
 
-class LaravelBlade implements TemplatableRenderer {
+class LaravelBlade implements Renderer {
 
     /**
      * The template to be used by the renderer.
