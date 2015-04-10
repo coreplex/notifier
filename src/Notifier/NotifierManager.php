@@ -1,9 +1,17 @@
 <?php namespace Coreplex\Notifier;
 
+use Coreplex\Notifier\Contracts\Session;
 use Illuminate\Support\Manager;
 use Coreplex\Notifier\Contracts\Renderer;
 
 class NotifierManager extends Manager {
+
+    /**
+     * An instance of a notifier session.
+     *
+     * @var Session
+     */
+    protected $session;
 
     /**
      * An instance of a notifier renderer.
@@ -12,11 +20,12 @@ class NotifierManager extends Manager {
      */
     protected $renderer;
 
-    public function __construct($app, Renderer $renderer)
+    public function __construct($app, Session $session, Renderer $renderer)
     {
         parent::__construct($app);
 
         $this->renderer = $renderer;
+        $this->session = $session;
     }
 
     /**
@@ -26,11 +35,7 @@ class NotifierManager extends Manager {
      */
     public function createAlertifyDriver()
     {
-        return new Alertify\Notifier(
-            $this->app['session.store'],
-            $this->renderer,
-            config('notifier')
-        );
+        return new Alertify\Notifier($this->session, $this->renderer, config('notifier'));
     }
 
     /**
@@ -40,11 +45,7 @@ class NotifierManager extends Manager {
      */
     public function createGrowlDriver()
     {
-        return new Growl\Notifier(
-            $this->app['session.store'],
-            $this->renderer,
-            config('notifier')
-        );
+        return new Growl\Notifier($this->session, $this->renderer, config('notifier'));
     }
 
     /**
