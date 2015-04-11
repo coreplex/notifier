@@ -29,8 +29,15 @@ class Native implements Session {
     {
         $this->config = $config;
 
+        if ( ! isset($_SESSION)) {
+            session_start();
+        }
+
         if ($this->initialLoad) {
-            if (isset($_SESSION[$this->config['sessionPrefix']]['flash'])) {
+            if (
+                isset($_SESSION[$this->config['sessionPrefix']]) &&
+                isset($_SESSION[$this->config['sessionPrefix']]['flash'])
+            ) {
                 $this->flash = $_SESSION[$this->config['sessionPrefix']]['flash'];
                 unset($_SESSION[$this->config['sessionPrefix']]['flash']);
             }
@@ -114,7 +121,7 @@ class Native implements Session {
      */
     protected function getSessionData()
     {
-        $data = $_SESSION[$this->config['sessionPrefix']];
+        $data = isset($_SESSION[$this->config['sessionPrefix']]) ? $_SESSION[$this->config['sessionPrefix']] : [];
 
         return array_merge($data, $this->flash);
     }
