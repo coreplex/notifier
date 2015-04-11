@@ -1,7 +1,7 @@
 <?php namespace Coreplex\Notifier;
 
+use ReflectionClass;
 use Illuminate\Support\ServiceProvider;
-use Coreplex\Notifier\Renderers\LaravelBlade;
 use Coreplex\Notifier\Session\IlluminateSession;
 
 class NotifierServiceProvider extends ServiceProvider {
@@ -62,7 +62,8 @@ class NotifierServiceProvider extends ServiceProvider {
     {
         $this->app->singleton('Coreplex\Notifier\Contracts\Session', function($app)
         {
-            return new IlluminateSession($app['session.store']);
+//            return new IlluminateSession($app['session.store']);
+            return (new ReflectionClass(config('notifier.session')))->newInstanceArgs([config('notifier')]);
         });
     }
 
@@ -73,7 +74,7 @@ class NotifierServiceProvider extends ServiceProvider {
     {
         $this->app->bind('Coreplex\Notifier\Contracts\Renderer', function($app)
         {
-            return new LaravelBlade($app['view']);
+            return (new ReflectionClass(config('notifier.renderer')))->newInstanceArgs([$app['view']]);
         });
     }
 

@@ -60,4 +60,17 @@ return [
      */
     'sessionPrefix' => 'coreplex.notifier',
 
+    /**
+     * --------------------------------------------------------------------
+     *  Renderer
+     * --------------------------------------------------------------------
+     *
+     * Set the renderer to be used to render the notifications. Available
+     * renderer's are: Coreplex\Notifier\Renderers\Basic or
+     * Coreplex\Notifier\Renderers\LaravelBlade
+     */
+    'renderer' => 'Coreplex\\Notifier\\Renderers\\LaravelBlade',
+
+    'session' => 'Coreplex\\Notifier\\Session\\IlluminateSession',
+
 ];

@@ -200,7 +200,7 @@ abstract class AbstractNotifier implements NotifierInterface {
      */
     protected function getSessionKey($level = false)
     {
-        return $this->config['sessionPrefix'] . '.notifications' . $level ? '.' . $level : '';
+        return $this->config['sessionPrefix'] . '.notifications' . ($level ? '.' . $level : '');
     }
 
     /**
