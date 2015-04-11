@@ -8,9 +8,48 @@ return [
      * --------------------------------------------------------------------
      *
      * Set the which driver should be used for the notifier, the current
-     * drivers are: growl or alertify.
+     * drivers are:
+     *
+     * growl
+     * alertify
      */
     'driver' => 'growl',
+
+    /**
+     * --------------------------------------------------------------------
+     *  Assets
+     * --------------------------------------------------------------------
+     *
+     * Set the paths to the notifier css and js files.
+     */
+    'assets' => [
+
+        'growl' => [
+
+            'css' => [
+                '/css/jquery.growl.css'
+            ],
+
+            'js' => [
+                'js/jquery.growl.js'
+            ]
+
+        ],
+
+        'alertify' => [
+
+            'css' => [
+                'css/alertify.core.css',
+                'css/alertify.bootstrap.css'
+            ],
+
+            'js' => [
+                'js/alertify.min.js'
+            ]
+
+        ]
+
+    ],
 
     /**
      * --------------------------------------------------------------------
@@ -80,8 +119,8 @@ return [
      *
      * Set the session class to be used. Available session classes are:
      *
-     * Coreplex\\Notifier\\Session\\Native
-     * Coreplex\\Notifier\\Session\\IlluminateSession
+     * Coreplex\Notifier\Session\Native
+     * Coreplex\Notifier\Session\IlluminateSession
      */
     'session' => 'Coreplex\\Notifier\\Session\\Native',
 

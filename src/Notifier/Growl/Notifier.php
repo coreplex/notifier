@@ -21,7 +21,7 @@ class Notifier extends AbstractNotifier {
      */
     protected function getStyles()
     {
-        return ['css/jquery.growl.css'];
+        return $this->config['assets']['growl']['css'];
     }
 
     /**
@@ -31,7 +31,7 @@ class Notifier extends AbstractNotifier {
      */
     protected function getScripts()
     {
-        return ['js/jquery.growl.js'];
+        return $this->config['assets']['growl']['js'];
     }
 
     /**

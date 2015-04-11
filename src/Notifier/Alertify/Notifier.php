@@ -21,7 +21,7 @@ class Notifier extends AbstractNotifier {
      */
     protected function getStyles()
     {
-        return ['css/alertify.core.css', 'css/alertify.bootstrap.css'];
+        return $this->config['assets']['alertify']['css'];
     }
 
     /**
@@ -31,7 +31,7 @@ class Notifier extends AbstractNotifier {
      */
     protected function getScripts()
     {
-        return ['js/alertify.min.js'];
+        return $this->config['assets']['alertify']['js'];
     }
 
     /**
