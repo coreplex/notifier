@@ -18,7 +18,7 @@ class NotifierServiceProvider extends ServiceProvider {
     public function boot()
     {
         // Set the directory to load views from
-        $this->loadViewsFrom(__DIR__.'/../../public/views/', 'notifier');
+        $this->loadViewsFrom(__DIR__.'/../../views/', 'notifier');
         // Set the folders to publish
         $this->publishes([
             __DIR__.'/../../config/notifier.php' => config_path('notifier.php'),
