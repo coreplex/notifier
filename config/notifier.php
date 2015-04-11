@@ -83,6 +83,6 @@ return [
      * Coreplex\\Notifier\\Session\\Native
      * Coreplex\\Notifier\\Session\\IlluminateSession
      */
-    'session' => 'Coreplex\\Notifier\\Session\\IlluminateSession',
+    'session' => 'Coreplex\\Notifier\\Session\\Native',
 
 ];

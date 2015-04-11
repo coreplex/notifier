@@ -27,7 +27,6 @@ class Native implements Session {
 
     public function __construct(array $config)
     {
-        session_start();
         $this->config = $config;
 
         if ($this->initialLoad) {
@@ -84,8 +83,11 @@ class Native implements Session {
      */
     public function forget($key)
     {
-        if (isset($_SESSION[$this->config['sessionPrefix'][$key]])) {
-            unset($_SESSION[$this->config['sessionPrefix'][$key]]);
+        if (
+            isset($_SESSION[$this->config['sessionPrefix']]) &&
+            isset($_SESSION[$this->config['sessionPrefix']][$key])
+        ) {
+            unset($_SESSION[$this->config['sessionPrefix']][$key]);
         }
 
         if (isset($this->flash[$key])) {
