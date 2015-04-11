@@ -31,7 +31,7 @@ return [
             ],
 
             'js' => [
-                'js/jquery.growl.js'
+                '/js/jquery.growl.js'
             ]
 
         ],
