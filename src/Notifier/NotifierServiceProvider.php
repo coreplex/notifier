@@ -22,7 +22,6 @@ class NotifierServiceProvider extends ServiceProvider {
         // Set the folders to publish
         $this->publishes([
             __DIR__.'/../../config/notifier.php' => config_path('notifier.php'),
-            __DIR__.'/../../public/views/' => public_path('resources/views/'),
         ]);
         // Merge the original config with the applications version.
         $this->mergeConfigFrom(__DIR__.'/../../config/notifier.php', 'notifier');
