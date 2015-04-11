@@ -66,11 +66,23 @@ return [
      * --------------------------------------------------------------------
      *
      * Set the renderer to be used to render the notifications. Available
-     * renderer's are: Coreplex\Notifier\Renderers\Basic or
+     * renderer's are:
+     *
+     * Coreplex\Notifier\Renderers\Basic
      * Coreplex\Notifier\Renderers\LaravelBlade
      */
     'renderer' => 'Coreplex\\Notifier\\Renderers\\LaravelBlade',
 
+    /**
+     * --------------------------------------------------------------------
+     *  Session
+     * --------------------------------------------------------------------
+     *
+     * Set the session class to be used. Available session classes are:
+     *
+     * Coreplex\\Notifier\\Session\\Native
+     * Coreplex\\Notifier\\Session\\IlluminateSession
+     */
     'session' => 'Coreplex\\Notifier\\Session\\IlluminateSession',
 
 ];
