@@ -27,11 +27,11 @@ return [
         'growl' => [
 
             'css' => [
-                '/css/jquery.growl.css'
+                'css/jquery.growl.css'
             ],
 
             'js' => [
-                '/js/jquery.growl.js'
+                'js/jquery.growl.js'
             ]
 
         ],
@@ -65,12 +65,12 @@ return [
             /**
              * The view to render a single notification.
              */
-            'notification' => 'notifier::growl.notification',
+            'notification' => 'path/to/views/growl/notification.php',
 
             /**
              * The view to renderer all of the rendered noticiations.
              */
-            'template' => 'notifier::growl.default',
+            'template' => 'path/to/views/growl/default.php',
 
         ],
 
@@ -79,12 +79,12 @@ return [
             /**
              * The view to render a single notification.
              */
-            'notification' => 'notifier::alertify.notification',
+            'notification' => 'path/to/views/alertify/notification.php',
 
             /**
              * The view to renderer all of the rendered noticiations.
              */
-            'template' => 'notifier::alertify.default',
+            'template' => 'path/to/views/alertify/default.php',
 
         ]
 
