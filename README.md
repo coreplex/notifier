@@ -3,6 +3,15 @@
 A PHP package to simply flash notifications and then render them with a JavaScript notifier. This package also comes 
 with Laravel support out of the box.
 
+- [Installation](#installation)
+- [Laravel 5 Integration](#laravel-5-integration)
+- [Adding Notifications](#adding-notifications)
+- [Rendering Notifications](#rendering-notifications)
+- [Setting up a Notifier](#setting-up-a-notifier)
+    - [Setting a Template](#setting-a-template)
+    - [Setting Notification levels](#setting-notification-levels)
+    - [Setting Scripts and Styles](#setting-scripts-and-styles)
+
 ## Installation
 This package requires PHP 5.4+, and includes a Laravel 5 Service Provider and Facade.
 
@@ -183,7 +192,7 @@ $notifier->notify('custom');
 $notifier->custom();
 ```
 
-### Setting Styles and Scripts
+### Setting Scripts and Styles
 
 If you are using multiple notifiers then you may not wish to load all of the styles or scripts on every request, but 
  only when that notifer is being used. To do this you can set the paths to your styles in the `css` array and the paths
