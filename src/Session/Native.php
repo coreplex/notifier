@@ -35,11 +35,11 @@ class Native implements Session
         }
         if ($this->initialLoad) {
             if (
-                isset($_SESSION[$this->config['sessionPrefix']]) &&
-                isset($_SESSION[$this->config['sessionPrefix']]['flash'])
+                isset($_SESSION[$this->config['sessionKey']]) &&
+                isset($_SESSION[$this->config['sessionKey']]['flash'])
             ) {
-                $this->flash = $_SESSION[$this->config['sessionPrefix']]['flash'];
-                unset($_SESSION[$this->config['sessionPrefix']]['flash']);
+                $this->flash = $_SESSION[$this->config['sessionKey']]['flash'];
+                unset($_SESSION[$this->config['sessionKey']]['flash']);
             }
             $this->initialLoad = false;
         }
@@ -77,7 +77,7 @@ class Native implements Session
      */
     public function put($key, $value)
     {
-        return $_SESSION[$this->config['sessionPrefix']][$key] = $value;
+        return $_SESSION[$this->config['sessionKey']][$key] = $value;
     }
 
     /**
@@ -88,10 +88,10 @@ class Native implements Session
     public function forget($key)
     {
         if (
-            isset($_SESSION[$this->config['sessionPrefix']]) &&
-            isset($_SESSION[$this->config['sessionPrefix']][$key])
+            isset($_SESSION[$this->config['sessionKey']]) &&
+            isset($_SESSION[$this->config['sessionKey']][$key])
         ) {
-            unset($_SESSION[$this->config['sessionPrefix']][$key]);
+            unset($_SESSION[$this->config['sessionKey']][$key]);
         }
         if (isset($this->flash[$key])) {
             unset($this->flash[$key]);
@@ -106,7 +106,7 @@ class Native implements Session
      */
     public function flash($key, $value)
     {
-        $_SESSION[$this->config['sessionPrefix']]['flash'][$key] = $value;
+        $_SESSION[$this->config['sessionKey']]['flash'][$key] = $value;
         $this->flash[$key] = $value;
     }
 
@@ -117,7 +117,7 @@ class Native implements Session
      */
     protected function getSessionData()
     {
-        $data = isset($_SESSION[$this->config['sessionPrefix']]) ? $_SESSION[$this->config['sessionPrefix']] : [];
+        $data = isset($_SESSION[$this->config['sessionKey']]) ? $_SESSION[$this->config['sessionKey']] : [];
         return array_merge($data, $this->flash);
     }
 }
