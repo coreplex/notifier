@@ -48,8 +48,40 @@ If you wish to use the facade then add the following to your aliases array in `a
 
 Finally once you've added the service provider run `php artisan vendor:publish` to publish the config file.
 
+## Usage
+
+The notifier is made up of a couple of components; a template parser and a session class. This package comes with a 
+template parser and a native PHP session class.
+
+However if you wish to make your own session or template parser you simply need to implement the Session or 
+TemplateParser interfaces.
+
+To make the default template parser you simply need to make a new instance of the Parser class. This class has no 
+dependencies so it's a simple case of creating the object.
+
+```php
+$parser = new Coreplex\Notifier\Parser();
+```
+
+The native session class requires the package config as a dependency.
+
+```php
+$config = require "path/to/config.php";
+
+$session = new Coreplex\Notifier\Session\Native($config);
+```
+
+Once you have the template parser and session you are ready to create the notifier. The notifier also requires the 
+package config as a third parameter.
+
+```php
+$notifier = new Coreplex\Notifier\Notifier($parser, $session, $config);
+```
+
+## Usage With Laravel
+
 Once you've set up the package to access the notifier you can either user the facade or you can inject the class by its
-contract.
+interface.
 
 ```php
 Notifier::render();
