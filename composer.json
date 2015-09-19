@@ -10,7 +10,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "Coreplex\\Notifier\\": "src/Notifier/"
+            "Coreplex\\Notifier\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Coreplex\\Notifier\\Tests\\": "tests/",
+            "Coreplex\\Notifier\\": "src/"
         }
     },
     "require-dev": {
