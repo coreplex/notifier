@@ -1,7 +1,28 @@
 <?php
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Notifier
+    |--------------------------------------------------------------------------
+    |
+    | Specify the default notifier config to be used when generating
+    | notifications.
+    |
+    */
+
     'default' => 'alertify',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Notifiers
+    |--------------------------------------------------------------------------
+    |
+    | Setup the different notifiers for your application, an example setup
+    | for the alertify notifier is added by default.
+    |
+    */
 
     'notifiers' => [
 
@@ -18,37 +39,16 @@ return [
 
         ],
 
-        'growl' => [
-
-            'template' => '$.growl.{{level}}({ title: "{{title}}", message: "{{message}}" });',
-            'css' => [],
-            'js' => [],
-            'levels' => [
-                'info' => 'warning',
-                'success' => 'notice',
-                'error' => 'error',
-            ],
-
-        ],
-
-        'igrowl' => [
-
-            'template' => '$.iGrowl({
-                type: "{{ type }}",
-                title: "{{ title }}",
-                message: "{{ message }}",
-                [if]icon: "{{ icon }}",[endif]
-            });',
-            'css' => [],
-            'js' => [],
-            'levels' => [
-                'info' => 'warning',
-                'success' => 'notice',
-                'error' => 'error',
-            ],
-
-        ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Key
+    |--------------------------------------------------------------------------
+    |
+    | The key to store the notifications by in the session.
+    |
+    */
 
     'sessionKey' => 'coreplex.notifier',
 ];
