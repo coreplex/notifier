@@ -5,6 +5,9 @@ namespace Coreplex\Notifier;
 use Coreplex\Notifier\Contracts\Notifier as NotifierContract;
 use Coreplex\Notifier\Contracts\Session;
 use Coreplex\Notifier\Contracts\TemplateParser;
+use Coreplex\Notifier\Exceptions\LevelNotSetException;
+use Coreplex\Notifier\Exceptions\NoDefaultNotifierSetException;
+use Coreplex\Notifier\Exceptions\NotifierNotSetException;
 
 class Notifier implements NotifierContract
 {
@@ -46,10 +49,10 @@ class Notifier implements NotifierContract
     public function __construct(TemplateParser $parser, Session $session, array $config)
     {
         $this->parser = $parser;
+        $this->session = $session;
         $this->config = $config;
 
         $this->driver($this->getDefault());
-        $this->session = $session;
     }
 
     /**
@@ -58,13 +61,18 @@ class Notifier implements NotifierContract
      * @param string $level
      * @param array  $attributes
      * @return $this
+     * @throws LevelNotSetException
      */
     public function notify($level, array $attributes = [])
     {
-        $this->notifications[] = array_merge(['level' => $this->driver['levels'][$level]], $attributes);
-        $this->session->flash($this->config['sessionKey'], $this->notifications);
+        if (isset($this->driver['levels'][$level])) {
+            $this->notifications[] = array_merge(['level' => $this->driver['levels'][$level]], $attributes);
+            $this->session->flash($this->config['sessionKey'], $this->notifications);
 
-        return $this;
+            return $this;
+        }
+
+        throw new LevelNotSetException("The {$level} notification level has not been set for the current driver.");
     }
 
     /**
@@ -86,7 +94,7 @@ class Notifier implements NotifierContract
      */
     public function error(array $attributes = [])
     {
-        return $this->notify('info', $attributes);
+        return $this->notify('error', $attributes);
     }
 
     /**
@@ -97,7 +105,7 @@ class Notifier implements NotifierContract
      */
     public function success(array $attributes = [])
     {
-        return $this->notify('info', $attributes);
+        return $this->notify('success', $attributes);
     }
 
     /**
@@ -157,22 +165,32 @@ class Notifier implements NotifierContract
      *
      * @param string $driver
      * @return $this
+     * @throws NotifierNotSetException
      */
     public function driver($driver)
     {
-        $this->driver = $this->config['notifiers'][$driver];
+        if (isset($this->config['notifiers'][$driver])) {
+            $this->driver = $this->config['notifiers'][$driver];
 
-        return $this;
+            return $this;
+        }
+
+        throw new NotifierNotSetException("No notifier has been set with the name {$driver}");
     }
 
     /**
      * Get the default notifier to user.
      *
      * @return array
+     * @throws NoDefaultNotifierSetException
      */
     protected function getDefault()
     {
-        return $this->config['default'];
+        if (isset($this->config['default'])) {
+            return $this->config['default'];
+        }
+
+        throw new NoDefaultNotifierSetException("No default notifier has been set.");
     }
 
     /**
