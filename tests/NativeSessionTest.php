@@ -1,18 +1,20 @@
-<?php namespace Coreplex\Notifier\Tests; 
+<?php
+
+namespace Coreplex\Notifier\Tests;
 
 use Coreplex\Notifier\Session\Native;
-use PHPUnit_Framework_TestCase;
 
-class NativeSessionTest extends PHPUnit_Framework_TestCase {
-
-    public function __construct () {
-        // Fixes error with session_start() and phpunit
-        ob_start();
+class NativeSessionTest extends BaseTest
+{
+    public function setUp()
+    {
+        // Fixes issues with session_start and phpunit
+        @session_start();
     }
 
     public function testSessionHasValue()
     {
-        $session = $this->newSession();
+        $session = $this->session();
         $session->put('foo', 'bar');
 
         $this->assertEquals(true, $session->has('foo'));
@@ -20,7 +22,7 @@ class NativeSessionTest extends PHPUnit_Framework_TestCase {
 
     public function testValueCanBeRetrievedFromSession()
     {
-        $session = $this->newSession();
+        $session = $this->session();
         $session->put('foo', 'bar');
 
         $this->assertEquals('bar', $session->get('foo'));
@@ -28,7 +30,7 @@ class NativeSessionTest extends PHPUnit_Framework_TestCase {
 
     public function testValueCanBeStoredInSession()
     {
-        $session = $this->newSession();
+        $session = $this->session();
         $session->put('foo', 'bar');
 
         $this->assertEquals(true, $session->has('foo'));
@@ -36,7 +38,7 @@ class NativeSessionTest extends PHPUnit_Framework_TestCase {
 
     public function testValueCanBeRemovedFromSession()
     {
-        $session = $this->newSession();
+        $session = $this->session();
         $session->put('foo', 'bar');
         $session->forget('foo');
 
@@ -45,22 +47,9 @@ class NativeSessionTest extends PHPUnit_Framework_TestCase {
 
     public function testValueCanBeFlashedToSession()
     {
-        $session = $this->newSession();
+        $session = $this->session();
         $session->flash('foo', 'bar');
 
         $this->assertEquals(true, $session->has('flash'));
     }
-
-    protected function newSession()
-    {
-        $config = $this->getConfig();
-
-        return new Native($config);
-    }
-
-    protected function getConfig()
-    {
-        return require  __DIR__ . '/../config/notifier.php';
-    }
-
 }
