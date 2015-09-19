@@ -13,5 +13,8 @@
             "Coreplex\\Notifier\\": "src/Notifier/"
         }
     },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
     "minimum-stability": "dev"
 }
