@@ -54,7 +54,7 @@ class NotifierServiceProvider extends ServiceProvider
     protected function registerSession()
     {
         $this->app->singleton('Coreplex\Notifier\Contracts\Session', function($app) {
-            return new Illuminate($app['session.store']);
+            return new Illuminate($app['session.store'], config('notifier'));
         });
     }
 

@@ -30,9 +30,11 @@ class Native implements Session
     public function __construct(array $config)
     {
         $this->config = $config;
+
         if ( ! isset($_SESSION)) {
             session_start();
         }
+
         if ($this->initialLoad) {
             if (
                 isset($_SESSION[$this->config['sessionKey']]) &&
@@ -54,6 +56,7 @@ class Native implements Session
     public function has($key)
     {
         $session = $this->getSessionData();
+
         return array_key_exists($key, $session);
     }
 
@@ -66,7 +69,8 @@ class Native implements Session
     public function get($key)
     {
         $session = $this->getSessionData();
-        return $session[$key];
+
+        return $this->has($key) ? $session[$key] : null;
     }
 
     /**
@@ -118,6 +122,7 @@ class Native implements Session
     protected function getSessionData()
     {
         $data = isset($_SESSION[$this->config['sessionKey']]) ? $_SESSION[$this->config['sessionKey']] : [];
+
         return array_merge($data, $this->flash);
     }
 }

@@ -14,9 +14,17 @@ class Illuminate implements Session
      */
     protected $session;
 
-    public function __construct(Store $session)
+    /**
+     * The package config.
+     *
+     * @var array
+     */
+    protected $config;
+
+    public function __construct(Store $session, array $config)
     {
         $this->session = $session;
+        $this->config = $config;
     }
 
     /**
@@ -27,7 +35,7 @@ class Illuminate implements Session
      */
     public function has($key)
     {
-        return $this->session->has($key);
+        return $this->session->has($this->getSessionKey($key));
     }
 
     /**
@@ -38,7 +46,7 @@ class Illuminate implements Session
      */
     public function get($key)
     {
-        return $this->session->get($key);
+        return $this->session->get($this->getSessionKey($key));
     }
 
     /**
@@ -49,7 +57,7 @@ class Illuminate implements Session
      */
     public function put($key, $value)
     {
-        return $this->session->put($key, $value);
+        return $this->session->put($this->getSessionKey($key), $value);
     }
 
     /**
@@ -59,7 +67,7 @@ class Illuminate implements Session
      */
     public function forget($key)
     {
-        return $this->session->forget($key);
+        return $this->session->forget($this->getSessionKey($key));
     }
 
     /**
@@ -70,6 +78,17 @@ class Illuminate implements Session
      */
     public function flash($key, $value)
     {
-        return $this->session->flash($key, $value);
+        return $this->session->flash($this->getSessionKey($key), $value);
+    }
+
+    /**
+     * Get the full session key.
+     *
+     * @param string $key
+     * @return mixed
+     */
+    protected function getSessionKey($key)
+    {
+        return $this->config['sessionKey'] . '.' . $key;
     }
 }

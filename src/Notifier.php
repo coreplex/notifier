@@ -67,7 +67,7 @@ class Notifier implements NotifierContract
     {
         if (isset($this->driver['levels'][$level])) {
             $this->notifications[] = array_merge(['level' => $this->driver['levels'][$level]], $attributes);
-            $this->session->flash($this->config['sessionKey'], $this->notifications);
+            $this->session->flash('notifications', $this->notifications);
 
             return $this;
         }
@@ -115,7 +115,7 @@ class Notifier implements NotifierContract
      */
     public function render()
     {
-        if ($notifications = $this->session->get($this->config['sessionKey'])) {
+        if ($notifications = $this->session->get('notifications')) {
             foreach ($notifications as $key => $notification) {
                 $notifications[$key] = $this->parser->parse($this->driver['template'], $notification);
             }
