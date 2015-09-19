@@ -8,6 +8,9 @@
             "email": "michael.jennings91@gmail.com"
         }
     ],
+    "require": {
+        "php": ">=5.4.0"
+    },
     "autoload": {
         "psr-4": {
             "Coreplex\\Notifier\\": "src/"
