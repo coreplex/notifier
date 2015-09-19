@@ -1,7 +1,9 @@
-<?php namespace Coreplex\Notifier\Contracts;
+<?php
 
-interface Session {
+namespace Coreplex\Notifier\Contracts;
 
+interface Session
+{
     /**
      * Check if an item exists in the session.
      *
@@ -40,5 +42,4 @@ interface Session {
      * @param $value
      */
     public function flash($key, $value);
-
 }

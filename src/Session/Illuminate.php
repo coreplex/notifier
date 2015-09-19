@@ -1,10 +1,12 @@
-<?php namespace Coreplex\Notifier\Session;
+<?php
+
+namespace Coreplex\Notifier\Session;
 
 use Illuminate\Session\Store;
 use Coreplex\Notifier\Contracts\Session;
 
-class IlluminateSession implements Session {
-
+class Illuminate implements Session
+{
     /**
      * An instance of the illuminate session store.
      *
@@ -70,5 +72,4 @@ class IlluminateSession implements Session {
     {
         return $this->session->flash($key, $value);
     }
-    
 }

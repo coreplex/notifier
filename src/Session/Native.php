@@ -1,9 +1,11 @@
-<?php namespace Coreplex\Notifier\Session; 
+<?php
+
+namespace Coreplex\Notifier\Session;
 
 use Coreplex\Notifier\Contracts\Session;
 
-class Native implements Session {
-
+class Native implements Session
+{
     /**
      * The notifier config.
      *
@@ -16,23 +18,21 @@ class Native implements Session {
      *
      * @var array
      */
-    private $flash = [];
+    protected $flash = [];
 
     /**
      * Flag to state if this is the first time the class has be instantiated.
      *
      * @var bool
      */
-    private $initialLoad = true;
+    protected $initialLoad = true;
 
     public function __construct(array $config)
     {
         $this->config = $config;
-
         if ( ! isset($_SESSION)) {
             session_start();
         }
-
         if ($this->initialLoad) {
             if (
                 isset($_SESSION[$this->config['sessionPrefix']]) &&
@@ -41,7 +41,6 @@ class Native implements Session {
                 $this->flash = $_SESSION[$this->config['sessionPrefix']]['flash'];
                 unset($_SESSION[$this->config['sessionPrefix']]['flash']);
             }
-
             $this->initialLoad = false;
         }
     }
@@ -55,7 +54,6 @@ class Native implements Session {
     public function has($key)
     {
         $session = $this->getSessionData();
-
         return array_key_exists($key, $session);
     }
 
@@ -68,7 +66,6 @@ class Native implements Session {
     public function get($key)
     {
         $session = $this->getSessionData();
-
         return $session[$key];
     }
 
@@ -96,7 +93,6 @@ class Native implements Session {
         ) {
             unset($_SESSION[$this->config['sessionPrefix']][$key]);
         }
-
         if (isset($this->flash[$key])) {
             unset($this->flash[$key]);
         }
@@ -122,8 +118,6 @@ class Native implements Session {
     protected function getSessionData()
     {
         $data = isset($_SESSION[$this->config['sessionPrefix']]) ? $_SESSION[$this->config['sessionPrefix']] : [];
-
         return array_merge($data, $this->flash);
     }
-
 }
