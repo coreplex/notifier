@@ -5,6 +5,8 @@ with Laravel support out of the box.
 
 - [Installation](#installation)
 - [Laravel 5 Integration](#laravel-5-integration)
+- [Usage](#usage)
+- [Usage With Laravel](#usage-with-laravel)
 - [Adding Notifications](#adding-notifications)
 - [Rendering Notifications](#rendering-notifications)
 - [Setting up a Notifier](#setting-up-a-notifier)
