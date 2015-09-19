@@ -191,7 +191,6 @@ class Notifier implements NotifierContract
      * Render the notifications to a string.
      *
      * @return string
-     * @link http://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.tostring
      */
     function __toString()
     {
