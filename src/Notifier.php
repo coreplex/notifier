@@ -115,14 +115,14 @@ class Notifier implements NotifierContract
      */
     public function render()
     {
-        $notifications = [];
+        if ($notifications = $this->session->get($this->config['sessionKey'])) {
+            foreach ($notifications as $key => $notification) {
+                $notifications[$key] = $this->parser->parse($this->driver['template'], $notification);
+            }
 
-        foreach ($this->session->get($this->config['sessionKey']) as $notification) {
-            $notifications[] = $this->parser->parse($this->driver['template'], $notification);
-        }
-
-        if ( ! empty($notifications)) {
-            return sprintf('<%s>' . implode('', $notifications) . '</%s>', 'script', 'script');
+            if ( ! empty($notifications)) {
+                return sprintf('<%s>' . implode('', $notifications) . '</%s>', 'script', 'script');
+            }
         }
 
         return '';
