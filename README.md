@@ -1,4 +1,4 @@
-# Notifier
+# Notifier [![Build Status](https://travis-ci.org/coreplex/notifier.svg?branch=master)](https://travis-ci.org/coreplex/notifier)
 
 A PHP package to simply flash notifications and then render them with a JavaScript notifier. This package also comes 
 with Laravel support out of the box.
