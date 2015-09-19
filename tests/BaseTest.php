@@ -10,37 +10,13 @@ use PHPUnit_Framework_TestCase;
 class BaseTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var array
-     */
-    protected $config;
-
-    /**
-     * @var Native
-     */
-    protected $session;
-
-    /**
-     * @var Parser
-     */
-    protected $parser;
-
-    /**
-     * @var Notifier
-     */
-    protected $notifier;
-
-    /**
      * Get a notifier instance.
      *
      * @return Notifier
      */
     protected function notifier()
     {
-        if ( ! isset($this->notifier)) {
-            $this->notifier = new Notifier($this->parser(), $this-session(), $this->config());
-        }
-
-        return $this->notifier;
+        return new Notifier($this->parser(), $this->session(), $this->config());
     }
 
     /**
@@ -50,11 +26,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
      */
     protected function parser()
     {
-        if ( ! isset($this->parser)) {
-            $this->parser = new Parser();
-        }
-
-        return $this->parser;
+        return new Parser();
     }
 
     /**
@@ -64,11 +36,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
      */
     protected function session()
     {
-        if ( ! isset($this->session)) {
-            $this->session = new Native($this->config());
-        }
-
-        return $this->session;
+        return new Native($this->config());
     }
 
     /**
