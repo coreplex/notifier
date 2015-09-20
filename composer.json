@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "coreplex/core": "~0.1"
     },
     "autoload": {
         "psr-4": {
@@ -18,8 +19,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Coreplex\\Notifier\\Tests\\": "tests/",
-            "Coreplex\\Notifier\\": "src/"
+            "Coreplex\\Notifier\\Tests\\": "tests/"
         }
     },
     "require-dev": {
