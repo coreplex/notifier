@@ -36,7 +36,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
      */
     protected function session()
     {
-        return new Native($this->coreConfig());
+        return new Native($this->coreConfig()['session']);
     }
 
     /**
