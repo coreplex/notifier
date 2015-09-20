@@ -2,7 +2,7 @@
 
 namespace Coreplex\Notifier;
 
-use Coreplex\Notifier\Session\Illuminate;
+use Coreplex\Core\Session\Illuminate;
 use Illuminate\Support\ServiceProvider;
 
 class NotifierServiceProvider extends ServiceProvider
@@ -34,7 +34,6 @@ class NotifierServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerParser();
-        $this->registerSession();
         $this->registerNotifier();
     }
 
@@ -49,16 +48,6 @@ class NotifierServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the notifier session handler.
-     */
-    protected function registerSession()
-    {
-        $this->app->singleton('Coreplex\Notifier\Contracts\Session', function($app) {
-            return new Illuminate($app['session.store'], config('notifier'));
-        });
-    }
-
-    /**
      * Register the notifier.
      */
     protected function registerNotifier()
@@ -66,7 +55,7 @@ class NotifierServiceProvider extends ServiceProvider
         $this->app->singleton('Coreplex\Notifier\Contracts\Notifier', function($app) {
             return new Notifier(
                 $app['Coreplex\Notifier\Contracts\TemplateParser'],
-                $app['Coreplex\Notifier\Contracts\Session'],
+                $app['Coreplex\Core\Contracts\Session'],
                 config('notifier')
             );
         });
@@ -83,7 +72,6 @@ class NotifierServiceProvider extends ServiceProvider
     {
         return [
             'Coreplex\Notifier\Contracts\TemplateParser',
-            'Coreplex\Notifier\Contracts\Session',
             'Coreplex\Notifier\Contracts\Notifier',
             'coreplex.notifier',
         ];
