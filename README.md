@@ -27,12 +27,13 @@ to download the package.
 
 ## Laravel 5 Integration
 
-To use the package with Laravel 5 firstly add the carpenter service provider to the list of service providers 
+To use the package with Laravel 5 we firstly need to add the notifier and core service providers to the providers array 
 in `app/config/app.php`.
 
 ```php
 'providers' => array(
 
+  Coreplex\Core\CoreServiceProvider::class,
   Coreplex\Notifier\NotifierServiceProvider::class,
 
 );
@@ -52,26 +53,16 @@ Finally once you've added the service provider run `php artisan vendor:publish` 
 
 ## Usage
 
-The notifier is made up of a couple of components; a template parser and a session class. This package comes with a 
-template parser and a native PHP session class.
+The notifier is made up of a couple of components; a template parser and the coreplex core session class.
 
-However if you wish to make your own session or template parser you simply need to implement the Session or 
-TemplateParser interfaces.
-
-To make the default template parser you simply need to make a new instance of the Parser class. This class has no 
+To make the template parser you simply need to make a new instance of the Parser class. This class has no 
 dependencies so it's a simple case of creating the object.
 
 ```php
 $parser = new Coreplex\Notifier\Parser();
 ```
 
-The native session class requires the package config as a dependency.
-
-```php
-$config = require "path/to/config.php";
-
-$session = new Coreplex\Notifier\Session\Native($config);
-```
+To see how to use the coreplex core session class check the [docs](https://github.com/coreplex/core).
 
 Once you have the template parser and session you are ready to create the notifier. The notifier also requires the 
 package config as a third parameter.
