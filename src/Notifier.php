@@ -2,8 +2,8 @@
 
 namespace Coreplex\Notifier;
 
+use Coreplex\Core\Contracts\Session;
 use Coreplex\Notifier\Contracts\Notifier as NotifierContract;
-use Coreplex\Notifier\Contracts\Session;
 use Coreplex\Notifier\Contracts\TemplateParser;
 use Coreplex\Notifier\Exceptions\LevelNotSetException;
 use Coreplex\Notifier\Exceptions\NoDefaultNotifierSetException;
