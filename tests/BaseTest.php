@@ -4,7 +4,7 @@ namespace Coreplex\Notifier\Tests;
 
 use Coreplex\Notifier\Notifier;
 use Coreplex\Notifier\Parser;
-use Coreplex\Notifier\Session\Native;
+use Coreplex\Core\Session\Native;
 use PHPUnit_Framework_TestCase;
 
 class BaseTest extends PHPUnit_Framework_TestCase
@@ -36,7 +36,7 @@ class BaseTest extends PHPUnit_Framework_TestCase
      */
     protected function session()
     {
-        return new Native($this->config());
+        return new Native($this->coreConfig());
     }
 
     /**
@@ -46,11 +46,17 @@ class BaseTest extends PHPUnit_Framework_TestCase
      */
     protected function config()
     {
-        if ( ! isset($this->config)) {
-            $this->config = require __DIR__ . '/../config/notifier.php';
-        }
+        return require __DIR__ . '/../config/notifier.php';
+    }
 
-        return $this->config;
+    /**
+     * Get the package config.
+     *
+     * @return array
+     */
+    protected function coreConfig()
+    {
+        return require __DIR__ . '/../vendor/coreplex/core/config/coreplex.php';
     }
 
     public function testCommon()
