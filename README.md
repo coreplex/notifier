@@ -1,4 +1,4 @@
-# Notifier [![Build Status](https://travis-ci.org/coreplex/notifier.svg?branch=master)](https://travis-ci.org/coreplex/notifier) [![Latest Stable Version](https://poser.pugx.org/coreplex/notifier/v/stable)](https://packagist.org/packages/coreplex/notifier) [![License](https://poser.pugx.org/coreplex/notifier/license)](https://packagist.org/packages/coreplex/notifier)
+# Notifier [![Build Status](https://travis-ci.org/coreplex/notifier.svg?branch=master)](https://travis-ci.org/coreplex/notifier) [![Latest Stable Version](https://poser.pugx.org/coreplex/notifier/v/stable)](https://packagist.org/packages/coreplex/notifier) [![Coverage Status](https://coveralls.io/repos/coreplex/notifier/badge.svg?branch=master&service=github)](https://coveralls.io/github/coreplex/notifier?branch=master) [![License](https://poser.pugx.org/coreplex/notifier/license)](https://packagist.org/packages/coreplex/notifier)
 
 A PHP package to simply flash notifications and then render them with a JavaScript notifier. This package also comes 
 with Laravel support out of the box.
