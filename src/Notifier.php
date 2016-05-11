@@ -117,7 +117,8 @@ class Notifier implements NotifierContract
     {
         if ($notifications = $this->session->get('notifications')) {
             foreach ($notifications as $key => $notification) {
-                $driver = array_pull($notification, 'driver');
+                $driver = $notification['driver'];
+                unset($notification['driver']);
                 $notifications[$key] = $this->parser->parse($driver['template'], $notification);
             }
 
